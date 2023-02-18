@@ -12,7 +12,7 @@ export interface ModuleOptions {
   endpoints: {
     authorization: string,
     userInfo: string,
-    logout: string
+    logout: string | null
   },
   clientId: string,
   scope: string[]
@@ -28,7 +28,7 @@ const defaults: ModuleOptions = {
   endpoints: {
     authorization: 'https://accounts.bitinflow.com/oauth/authorize',
     userInfo: `https://accounts.bitinflow.com/api/v3/user`,
-    logout: 'https://accounts.bitinflow.com/logout'
+    logout: null,
   },
   clientId: 'please-set-client-id',
   scope: ['user:read']

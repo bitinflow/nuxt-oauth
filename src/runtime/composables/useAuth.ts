@@ -45,7 +45,17 @@ export default async (options: ComposableOptions = {
     accessToken.value = null;
     user.value = null;
 
-    return navigateTo(authConfig.endpoints.logout || authConfig.redirect.logout)
+    if (authConfig.endpoints.logout) {
+      // create oauth logout url
+      const params = new URLSearchParams({
+        client_id: authConfig.clientId,
+        redirect_uri: window.location.origin + authConfig.redirect.logout
+      })
+
+      window.location.href = `${authConfig.endpoints.logout}?${params.toString()}`
+    }
+
+    return navigateTo(authConfig.redirect.logout)
   }
 
   const setBearer = async (token: string, tokenType: string, expires: number) => {
