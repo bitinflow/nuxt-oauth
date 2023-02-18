@@ -1,47 +1,57 @@
 # @bitinflow/nuxt-oauth
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
-
-> My new Nuxt module
+> Nuxt module for OAuth2 authentication
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
-<!-- - [📖 &nbsp;Documentation](https://example.com) -->
 
 ## Features
 
-<!-- Highlight some of the features your module provide here -->
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
+- 📦 OAuth2 authentication
+- 📦 Supports only one OAuth2 provider
+- 📦 Supports only implicit flow
 
 ## Quick Setup
 
-1. Add `my-module` dependency to your project
+1. Add `@bitinflow/nuxt-oauth` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add -D my-module
+pnpm add -D @bitinflow/nuxt-oauth
 
 # Using yarn
-yarn add --dev my-module
+yarn add --dev @bitinflow/nuxt-oauth
 
 # Using npm
-npm install --save-dev my-module
+npm install --save-dev @bitinflow/nuxt-oauth
 ```
 
-2. Add `my-module` to the `modules` section of `nuxt.config.ts`
+2. Add `@bitinflow/nuxt-oauth` to the `modules` section of `nuxt.config.ts`
 
 ```js
 export default defineNuxtConfig({
   modules: [
-    'my-module'
-  ]
+    '@bitinflow/nuxt-oauth'
+  ],
+
+  oauth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/home'
+    },
+    endpoints: {
+      authorization: 'https://example.com/v1/oauth/authorization',
+      userInfo: `https://example.com/api/users/me`,
+      logout: 'https://example.com/oauth/logout'
+    },
+    clientId: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+    scope: ['user:read']
+  },
 })
 ```
 
-That's it! You can now use My Module in your Nuxt app ✨
+That's it! You can now use @bitinflow/nuxt-oauth in your Nuxt app ✨
 
 ## Development
 
@@ -68,13 +78,3 @@ npm run test:watch
 # Release new version
 npm run release
 ```
-
-<!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/my-module/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/my-module
-
-[npm-downloads-src]: https://img.shields.io/npm/dm/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/my-module
-
-[license-src]: https://img.shields.io/npm/l/my-module.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://npmjs.com/package/my-module
