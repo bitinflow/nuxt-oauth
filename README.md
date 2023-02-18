@@ -25,13 +25,22 @@ yarn add --dev @bitinflow/nuxt-oauth
 npm install --save-dev @bitinflow/nuxt-oauth
 ```
 
-2. Add `@bitinflow/nuxt-oauth` to the `modules` section of `nuxt.config.ts`
+2. Add `@bitinflow/nuxt-oauth` to the `modules` section of `nuxt.config.ts` and disable `ssr`.
+   
+Or alternatively disable `ssr` via `routeRules`, only for pages where `auth` or `guest` middlewares are needed. Typically account section and login page.
 
 ```js
 export default defineNuxtConfig({
   modules: [
     '@bitinflow/nuxt-oauth'
   ],
+
+  ssr: false,
+  // or
+  routeRules: {
+    '/account/**': { ssr: false },
+    '/auth/**': { ssr: false }
+  },
 
   oauth: {
     redirect: {

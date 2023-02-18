@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
+
+  ssr: false,
+
   oauth: {
     redirect: {
       login: '/login/', // sandbox appends / at the end of url
