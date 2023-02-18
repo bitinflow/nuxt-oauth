@@ -45,7 +45,7 @@ export default async (options: ComposableOptions = {
     accessToken.value = null;
     user.value = null;
 
-    return navigateTo('/')
+    return navigateTo(authConfig.endpoints.logout || authConfig.redirect.logout)
   }
 
   const setBearer = async (token: string, tokenType: string, expires: number) => {
