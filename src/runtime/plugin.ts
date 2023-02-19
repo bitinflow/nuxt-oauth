@@ -3,17 +3,22 @@ import useAuth from "./composables/useAuth"
 
 export default defineNuxtPlugin(() => {
   addRouteMiddleware('auth', async (to) => {
-    const {user, authConfig, setBearer} = await useAuth()
+    const {user, authConfig, setBearerToken} = await useAuth()
 
     if (to.path === authConfig.redirect.callback) {
-      const params = new URLSearchParams(to.hash.substring(1))
+      const queryParams = new URLSearchParams(to.query.toString());
+      if (queryParams.has('error')) {
+        return navigateTo(authConfig.redirect.login)
+      }
 
-      if (params.has('access_token')) {
-        const token = params.get('access_token') as string;
-        const tokenType = params.get('token_type') as string;
-        const expires = params.get('expires_in') as string;
+      const hashParams = new URLSearchParams(to.hash.substring(1))
 
-        await setBearer(token, tokenType, parseInt(expires));
+      if (hashParams.has('access_token')) {
+        const token = hashParams.get('access_token') as string;
+        const tokenType = hashParams.get('token_type') as string;
+        const expires = hashParams.get('expires_in') as string;
+
+        await setBearerToken(token, tokenType, parseInt(expires));
         return navigateTo(authConfig.redirect.home)
       }
 

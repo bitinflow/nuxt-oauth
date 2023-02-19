@@ -58,7 +58,7 @@ export default async (options: ComposableOptions = {
     return navigateTo(authConfig.redirect.logout)
   }
 
-  const setBearer = async (token: string, tokenType: string, expires: number) => {
+  const setBearerToken = async (token: string, tokenType: string, expires: number) => {
     accessToken.value = {token, tokenType, expiresAt: Date.now() + expires * 1000};
     await fetchUser()
   }
@@ -68,11 +68,18 @@ export default async (options: ComposableOptions = {
     await fetchUser()
   }
 
+  const bearerToken = () => {
+    return accessToken.value
+      ? `${accessToken.value.tokenType} ${accessToken.value.token}`
+      : null;
+  }
+
   return {
     user,
     signIn,
     signOut,
-    setBearer,
+    setBearerToken,
+    bearerToken,
     authConfig
   }
 }
