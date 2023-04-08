@@ -80,6 +80,7 @@ export default async (options: ComposableOptions = {
     signOut,
     setBearerToken,
     bearerToken,
+    accessToken,
     authConfig
   }
 }
