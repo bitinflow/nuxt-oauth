@@ -11,16 +11,3 @@ is [not recommended](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-secu
 want to use the `token` response type, you need to set it explicitly with `responseType: 'token'` in the
 `oauth` configuration. Otherwise, you will use Authorization Code Grant with PKCE by default.
 
-### Refactor default `login` and `callback` routes to `/auth/login`
-
-We nested all authentication related routes under `/auth` prefix, so it aligned with our documentation and
-provided a better default configuration. If you want to use the old routes, you need to update your `oauth`
-configuration:
-
-```
-endpoints: {
-  login: '/login',
-  callback: '/login',
-},
-```
-

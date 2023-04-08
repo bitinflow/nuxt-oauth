@@ -9,7 +9,7 @@ definePageMeta({
 
 const { $api } = useNuxtApp()
 
-$api.get('users/@me')
+$api.get('user')
   .then((response: any) => {
     console.log(response.data)
   })
@@ -20,7 +20,7 @@ $api.get('users/@me')
 
 <template>
   <div v-if="user">
-    Hello {{ user.name }}
+    Hello {{ user.data.first_name }}
 
     <button @click="signOut">
       Sign Out

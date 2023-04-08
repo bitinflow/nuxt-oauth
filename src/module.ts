@@ -3,32 +3,32 @@ import defu from "defu";
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
-  redirect: {
-    login: string,
-    logout: string,
-    callback: string,
-    home: string
+  redirect?: {
+    login?: string,
+    logout?: string,
+    callback?: string,
+    home?: string
   },
-  endpoints: {
-    authorization: string,
-    token: string,
-    userInfo: string,
-    logout: string | null
+  endpoints?: {
+    authorization?: string,
+    token?: string,
+    userInfo?: string,
+    logout?: string | null
   },
-  refreshToken: {
+  refreshToken?: {
     maxAge: number,
   }
-  clientId: string,
-  responseType: 'token' | 'code',
-  prompt: '' | 'none' | 'login' | 'consent',
-  scope: string[]
+  clientId?: string,
+  responseType?: 'token' | 'code',
+  prompt?: '' | 'none' | 'login' | 'consent',
+  scope?: string[]
 }
 
 const defaults: ModuleOptions = {
   redirect: {
-    login: '/auth/login',
+    login: '/login',
     logout: '/',
-    callback: '/auth/login',
+    callback: '/login',
     home: '/'
   },
   endpoints: {

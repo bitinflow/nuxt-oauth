@@ -50,8 +50,8 @@ export default defineNuxtConfig({
   ssr: false,
   // or
   routeRules: {
-    '/account/**': {ssr: false},
-    '/auth/**': {ssr: false}
+    '/dashboard/**': {ssr: false},
+    '/whatever/**': {ssr: false}
   },
 
   // using code response type (default)

@@ -7,7 +7,7 @@ export default defineNuxtPlugin(async () => {
   const {bearerToken, accessToken} = await useAuth();
 
   const api = axios.create({
-    baseURL: 'https://id.stream.tv/api/',
+    baseURL: 'https://accounts.bitinflow.com/api/v3/',
     headers: {
       common: {
         'Authorization': bearerToken(),
