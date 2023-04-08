@@ -6,8 +6,8 @@
 
 ## Features
 
-- 📦 Simple OAuth 2 Implicit Grant authentication
-- 📦 PKCE Support (planned)
+- 📦 Authorization Code Grant with PKCE (default)
+- 📦 Simple OAuth 2 Implicit Grant authentication ([not recommended](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics))
 - 📦 Intended to be used with laravel-passport
 - 📦 Single OAuth provider support (currently)
 

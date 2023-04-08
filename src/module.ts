@@ -11,10 +11,16 @@ export interface ModuleOptions {
   },
   endpoints: {
     authorization: string,
+    token: string,
     userInfo: string,
     logout: string | null
   },
+  refreshToken: {
+    maxAge: number,
+  }
   clientId: string,
+  responseType: 'token' | 'code',
+  prompt: '' | 'none' | 'login' | 'consent',
   scope: string[]
 }
 
@@ -27,11 +33,17 @@ const defaults: ModuleOptions = {
   },
   endpoints: {
     authorization: 'https://accounts.bitinflow.com/oauth/authorize',
+    token: 'https://accounts.bitinflow.com/oauth/token',
     userInfo: `https://accounts.bitinflow.com/api/v3/user`,
     logout: null,
   },
+  refreshToken: {
+    maxAge: 60 * 60 * 24 * 30,
+  },
   clientId: 'please-set-client-id',
-  scope: ['user:read']
+  responseType: 'code',
+  prompt: '',
+  scope: []
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -40,7 +52,7 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'oauth'
   },
   defaults,
-  setup (moduleOptions, nuxt) {
+  setup(moduleOptions, nuxt) {
     const resolver = createResolver(import.meta.url)
 
     const options = defu(moduleOptions, {
@@ -48,7 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Set up runtime configuration
-    nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || { public: {} }
+    nuxt.options.runtimeConfig = nuxt.options.runtimeConfig || {public: {}}
     nuxt.options.runtimeConfig.oauth = defu(nuxt.options.runtimeConfig.oauth, {
       ...options
     })
