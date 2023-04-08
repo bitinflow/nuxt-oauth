@@ -5,13 +5,15 @@ declare interface ComposableOptions {
   fetchUserOnInitialization: boolean
 }
 
-const user: CookieRef<any> = useCookie('oauth_user')
-const accessToken: CookieRef<any> = useCookie('oauth_access_token')
+let user: CookieRef<any>;
+let accessToken: CookieRef<any>;
 
 export default async (options: ComposableOptions = {
   fetchUserOnInitialization: false
 }) => {
   const authConfig = useRuntimeConfig().public.oauth as ModuleOptions;
+  if (user == null) user = useCookie('oauth_user')
+  if (accessToken == null) accessToken = useCookie('oauth_access_token')
 
   const fetchUser = async () => {
     try {
