@@ -34,7 +34,7 @@ const defaults: ModuleOptions = {
   endpoints: {
     authorization: 'https://accounts.bitinflow.com/oauth/authorize',
     token: 'https://accounts.bitinflow.com/oauth/token',
-    userInfo: `https://accounts.bitinflow.com/api/v3/user`,
+    userInfo: 'https://accounts.bitinflow.com/api/v3/user',
     logout: null,
   },
   refreshToken: {
