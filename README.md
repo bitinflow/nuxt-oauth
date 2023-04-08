@@ -20,7 +20,7 @@ developers can quickly and easily implement secure OAuth authentication in their
 
 ## Quick Setup
 
-> **Note:** Starting with **@bitinflow/nuxt-oauth** v1.2.0, the default response type is `code`. If you want to use the
+> **Note:** Starting with **@bitinflow/nuxt-oauth** v2.0.0, the default response type is `code`. If you want to use the
 > `token` response type, you need to set it explicitly in the configuration.
 
 1. Add `@bitinflow/nuxt-oauth` dependency to your project
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 
 This will be your callback url (host is determined by `window.location.origin`):
 
-- Callback: `http://localhost:3000/login`
+- Callback: `http://localhost:3000/auth/login`
 
 That's it! You can now use @bitinflow/nuxt-oauth in your Nuxt app ✨
 

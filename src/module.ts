@@ -26,9 +26,9 @@ export interface ModuleOptions {
 
 const defaults: ModuleOptions = {
   redirect: {
-    login: '/login',
+    login: '/auth/login',
     logout: '/',
-    callback: '/login',
+    callback: '/auth/login',
     home: '/'
   },
   endpoints: {
