@@ -1,6 +1,6 @@
 {
   "name": "@bitinflow/nuxt-oauth",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Nuxt 3 OAuth Module",
   "license": "MIT",
   "type": "module",

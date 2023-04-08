@@ -12,8 +12,8 @@ export default async (options: ComposableOptions = {
   fetchUserOnInitialization: false
 }) => {
   const authConfig = useRuntimeConfig().public.oauth as ModuleOptions;
-  if (user == null) user = useCookie('oauth_user')
-  if (accessToken == null) accessToken = useCookie('oauth_access_token')
+  if (user == null) user = useCookie('oauth_user');
+  if (accessToken == null) accessToken = useCookie('oauth_access_token');
 
   const fetchUser = async () => {
     try {
