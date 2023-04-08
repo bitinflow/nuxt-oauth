@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {useAuth} from "#imports";
+import {useAuth, useNuxtApp} from "#imports";
 
 const {user, signOut} = await useAuth();
 
@@ -7,6 +7,15 @@ definePageMeta({
   middleware: ["auth"]
 })
 
+const { $api } = useNuxtApp()
+
+$api.get('users/@me')
+  .then((response: any) => {
+    console.log(response.data)
+  })
+  .catch((error: any) => {
+    console.log(error)
+  })
 </script>
 
 <template>
