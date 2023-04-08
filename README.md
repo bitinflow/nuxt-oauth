@@ -1,14 +1,15 @@
-# @bitinflow/nuxt-oauth
+# 🔒 @bitinflow/nuxt-oauth
 
-> Nuxt module for OAuth2 authentication
+**@bitinflow/nuxt-oauth** is a Nuxt 3 Module that provides a simple OAuth 2 implementation for static site nuxt applications. It uses an Implicit Grant where no backend code is required, and plans to support PKCE as well. This package is intended to be used with laravel-passport, allowing users to interact with their first-party API using their own OAuth provider. Currently, it does not support multiple OAuth providers. With **@bitinflow/nuxt-oauth**, developers can quickly and easily implement secure OAuth authentication in their Nuxt applications.
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 
 ## Features
 
-- 📦 OAuth2 authentication
-- 📦 Supports only one OAuth2 provider
-- 📦 Supports only implicit flow
+- 📦 Simple OAuth 2 Implicit Grant authentication
+- 📦 PKCE Support (planned)
+- 📦 Intended to be used with laravel-passport
+- 📦 Single OAuth provider support (currently)
 
 ## Quick Setup
 
