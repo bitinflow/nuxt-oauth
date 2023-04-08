@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 
 This will be your callback url (host is determined by `window.location.origin`):
 
-- Callback: `http://localhost:3000/auth/login`
+- Callback: `http://localhost:3000/login`
 
 That's it! You can now use @bitinflow/nuxt-oauth in your Nuxt app ✨
 

@@ -1,6 +1,6 @@
 {
   "name": "@bitinflow/nuxt-oauth",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "description": "Nuxt 3 OAuth Module",
   "license": "MIT",
   "type": "module",
@@ -21,7 +21,8 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish --access public && git push --follow-tags",
+    "release": "npm run lint && npm run test && npm run prepack && changelogen --release && git push --follow-tags",
+    "push": "npm publish --access public",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"
