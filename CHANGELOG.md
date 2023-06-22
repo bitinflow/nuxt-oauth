@@ -1,6 +1,8 @@
 # Changelog
 
 
+## v2.0.2
+
 ## v2.0.1
 
 Typo fixes in the GitHub/NPM repo
