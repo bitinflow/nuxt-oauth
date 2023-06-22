@@ -74,7 +74,7 @@ export default defineNuxtPlugin(() => {
   addRouteMiddleware('auth', async (to) => {
     const {user, authConfig, setBearerToken, setRefreshToken} = await useAuth()
 
-    if (to.path === authConfig.redirect.callback) {
+    if (to.path === authConfig.redirect.callback || to.path === authConfig.redirect.callback + '/') {
       const queryParams = new URLSearchParams(to.query.toString());
       if (queryParams.has('error')) {
         return navigateTo(authConfig.redirect.login)
