@@ -17,6 +17,6 @@ jobs:
           scope: '@bitinflow'
       - run: yarn install
       - run: yarn ci
-      - run: yarn npm publish
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
