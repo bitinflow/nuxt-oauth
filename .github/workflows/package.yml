@@ -16,7 +16,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           scope: '@bitinflow'
       - run: yarn install
-      - run: yarn build
+      - run: yarn ci
       - run: yarn npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

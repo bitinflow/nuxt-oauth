@@ -21,7 +21,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "build": "npm run lint && npm run test && npm run prepack",
+    "ci": "npm run lint && npm run dev:prepare && npm run test && npm run prepack",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && git push --follow-tags",
     "push": "npm publish --access public",
     "lint": "eslint .",
