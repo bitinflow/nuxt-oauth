@@ -25,7 +25,7 @@ export default defineNuxtPlugin(() => {
       const expires = hashParams.get('expires_in') as string;
 
       await setBearerToken(token, tokenType, parseInt(expires));
-      return navigateTo(authConfig.redirect.home)
+      return navigateTo(authConfig.redirect.home, { external: true })
     }
   }
 
@@ -44,7 +44,7 @@ export default defineNuxtPlugin(() => {
 
       if (stateFromRequest !== stateFromCookie.value) {
         console.warn('State mismatch', stateFromRequest, stateFromCookie.value)
-        return navigateTo(authConfig.redirect.login)
+        return navigateTo(authConfig.redirect.login, { external: true })
       }
 
       const formData = new FormData();
@@ -61,13 +61,13 @@ export default defineNuxtPlugin(() => {
 
       if (!response.ok) {
         console.warn('Failed to fetch token', response)
-        return navigateTo(authConfig.redirect.login)
+        return navigateTo(authConfig.redirect.login, { external: true })
       }
 
       const data: AccessToken = await response.json();
       await setBearerToken(data.access_token, data.token_type, data.expires_in)
       await setRefreshToken(data.refresh_token, data.token_type, authConfig.refreshToken.maxAge)
-      return navigateTo(authConfig.redirect.home)
+      return navigateTo(authConfig.redirect.home, { external: true })
     }
   }
 
@@ -77,7 +77,7 @@ export default defineNuxtPlugin(() => {
     if (to.path === authConfig.redirect.callback || to.path === authConfig.redirect.callback + '/') {
       const queryParams = new URLSearchParams(to.query.toString());
       if (queryParams.has('error')) {
-        return navigateTo(authConfig.redirect.login)
+        return navigateTo(authConfig.redirect.login, { external: true })
       }
 
       if (authConfig.responseType === 'token') {
@@ -92,7 +92,7 @@ export default defineNuxtPlugin(() => {
     }
 
     if (user.value === undefined) {
-      return navigateTo(authConfig.redirect.login)
+      return navigateTo(authConfig.redirect.login, { external: true })
     }
   })
 
@@ -100,7 +100,7 @@ export default defineNuxtPlugin(() => {
     const {user, authConfig} = await useAuth()
 
     if (user.value !== undefined) {
-      return navigateTo(authConfig.redirect.home)
+      return navigateTo(authConfig.redirect.home, { external: true })
     }
   })
 })

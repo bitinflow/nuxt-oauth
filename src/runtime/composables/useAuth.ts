@@ -74,7 +74,7 @@ export default async (options: ComposableOptions = {
       window.location.href = `${authConfig.endpoints.logout}?${params.toString()}`
     }
 
-    return navigateTo(authConfig.redirect.logout)
+    return navigateTo(authConfig.redirect.logout, { external: true })
   }
 
   const setBearerToken = async (token: string, tokenType: string, expires: number): Promise<void> => {
