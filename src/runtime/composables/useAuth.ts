@@ -1,6 +1,6 @@
-import {CookieRef, navigateTo, useCookie, useRuntimeConfig} from "#app";
+import {CookieRef, navigateTo, useRuntimeConfig} from "#app";
 import {ModuleOptions} from "../../module";
-import {generateRandomString, getChallengeFromVerifier} from "../support";
+import { generateRandomString, getChallengeFromVerifier, useCookie } from '../support'
 
 declare interface ComposableOptions {
   fetchUserOnInitialization: boolean
@@ -14,9 +14,9 @@ export default async (options: ComposableOptions = {
   fetchUserOnInitialization: false
 }) => {
   const authConfig = useRuntimeConfig().public.oauth as ModuleOptions;
-  if (user == null) user = useCookie('oauth_user');
-  if (accessToken == null) accessToken = useCookie('oauth_access_token');
-  if (refreshToken == null) refreshToken = useCookie('oauth_refresh_token');
+  if (user == null) user = useCookie('oauth_user', authConfig);
+  if (accessToken == null) accessToken = useCookie('oauth_access_token', authConfig);
+  if (refreshToken == null) refreshToken = useCookie('oauth_refresh_token', authConfig);
 
   const fetchUser = async (): Promise<void> => {
     try {
@@ -36,7 +36,7 @@ export default async (options: ComposableOptions = {
   }
 
   const signIn = async (): Promise<void> => {
-    const state = useCookie<string>('oauth_state');
+    const state = useCookie<string>('oauth_state', authConfig);
     state.value = generateRandomString();
 
     // create oauth authorization url
@@ -50,7 +50,7 @@ export default async (options: ComposableOptions = {
     })
 
     if (authConfig.responseType === 'code') {
-      const codeVerifier = useCookie<string>('oauth_code_verifier');
+      const codeVerifier = useCookie<string>('oauth_code_verifier', authConfig);
       codeVerifier.value = generateRandomString();
 
       params.set('code_challenge', await getChallengeFromVerifier(codeVerifier.value))

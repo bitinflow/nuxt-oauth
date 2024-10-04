@@ -1,7 +1,8 @@
-import {addRouteMiddleware, defineNuxtPlugin, navigateTo, useCookie} from '#app'
+import {addRouteMiddleware, defineNuxtPlugin, navigateTo} from '#app'
 import useAuth from "./composables/useAuth"
 import {RouteLocationNormalized} from "vue-router";
 import {ModuleOptions} from "../module";
+import {useCookie} from "./support";
 
 interface AccessToken {
   access_token: string,
@@ -39,8 +40,9 @@ export default defineNuxtPlugin(() => {
     if (to.query['code']) {
       const code = to.query['code'] as string;
       const stateFromRequest = to.query['state'] as string;
-      const stateFromCookie = useCookie<string>('oauth_state');
-      const codeVerifier = useCookie<string>('oauth_code_verifier');
+      console.log('options', authConfig.cookies?.options)
+      const stateFromCookie = useCookie<string>('oauth_state', authConfig);
+      const codeVerifier = useCookie<string>('oauth_code_verifier', authConfig);
 
       if (stateFromRequest !== stateFromCookie.value) {
         console.warn('State mismatch', stateFromRequest, stateFromCookie.value)
