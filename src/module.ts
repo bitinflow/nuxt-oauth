@@ -18,6 +18,24 @@ export interface ModuleOptions {
   refreshToken?: {
     maxAge: number,
   }
+  cookies?: {
+    prefix?: string,
+    names?: {
+      oauth_user?: 'oauth_user'
+      oauth_state?: 'oauth_state'
+      oauth_code_verifier?: 'oauth_code_verifier'
+      oauth_access_token?: 'oauth_access_token'
+      oauth_refresh_token?: 'oauth_refresh_token'
+    }
+    options?: {
+      path?: string,
+      maxAge?: number,
+      secure?: boolean,
+      sameSite?: string,
+      domain?: string,
+      httpOnly?: boolean
+    }
+  }
   clientId?: string,
   responseType?: 'token' | 'code',
   prompt?: '' | 'none' | 'login' | 'consent',
@@ -32,9 +50,9 @@ const defaults: ModuleOptions = {
     home: '/'
   },
   endpoints: {
-    authorization: 'https://accounts.bitinflow.com/oauth/authorize',
-    token: 'https://accounts.bitinflow.com/oauth/token',
-    userInfo: 'https://accounts.bitinflow.com/api/v3/user',
+    authorization: 'https://example.com/oauth/authorize',
+    token: 'https://example.com/oauth/token',
+    userInfo: 'https://example.com/api/users/me',
     logout: null,
   },
   refreshToken: {

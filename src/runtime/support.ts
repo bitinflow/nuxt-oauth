@@ -2,6 +2,9 @@
  * Source: https://docs.cotter.app/sdk-reference/api-for-other-mobile-apps/api-for-mobile-apps
  */
 
+import { ModuleOptions } from '../module'
+import {useCookie as _useCookie, CookieRef} from "#app";
+
 function dec2hex(dec: any) {
   return ('0' + dec.toString(16)).substr(-2)
 }
@@ -33,4 +36,11 @@ function base64urlencode(a: any) {
 
 export async function getChallengeFromVerifier(v: any) {
   return base64urlencode(await sha256(v));
+}
+
+export function useCookie<T = string | null | undefined>(name: string, options: ModuleOptions): CookieRef<T> {
+  const cookieName = options.cookies?.names?.[name] || name;
+  const cookiePrefix = options.cookies?.prefix || '';
+  const cookieOptions = options.cookies?.options || {};
+  return _useCookie(cookiePrefix + cookieName, cookieOptions)
 }
