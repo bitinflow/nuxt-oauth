@@ -1,7 +1,16 @@
 # Changelog
 
+## v2.0.4
+
+Add `cookies` option in `ModuleOptions` interface
+
+## v2.0.3
+
+Add ", { external: true }" in navigateTo
 
 ## v2.0.2
+
+Fix for `auth` middleware
 
 ## v2.0.1
 
