@@ -37,6 +37,7 @@ export interface ModuleOptions {
     }
   }
   clientId?: string,
+  clientSecret?: string,
   responseType?: 'token' | 'code',
   prompt?: '' | 'none' | 'login' | 'consent',
   scope?: string[]

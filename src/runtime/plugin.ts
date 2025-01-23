@@ -52,6 +52,7 @@ export default defineNuxtPlugin(() => {
       const formData = new FormData();
       formData.append('grant_type', 'authorization_code')
       formData.append('client_id', authConfig.clientId)
+      formData.append('client_secret', authConfig.clientSecret)
       formData.append('redirect_uri', window.location.origin + authConfig.redirect.callback)
       formData.append('code_verifier', codeVerifier.value)
       formData.append('code', code)

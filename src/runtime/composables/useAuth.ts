@@ -42,6 +42,7 @@ export default async (options: ComposableOptions = {
     // create oauth authorization url
     const params = new URLSearchParams({
       client_id: authConfig.clientId,
+      client_secret: authConfig.clientSecret,
       redirect_uri: window.location.origin + authConfig.redirect.callback,
       response_type: authConfig.responseType,
       scope: authConfig.scope.join(' '),
@@ -68,6 +69,7 @@ export default async (options: ComposableOptions = {
       // create oauth logout url
       const params = new URLSearchParams({
         client_id: authConfig.clientId,
+        client_secret: authConfig.clientSecret,
         redirect_uri: window.location.origin + authConfig.redirect.logout
       })
 
